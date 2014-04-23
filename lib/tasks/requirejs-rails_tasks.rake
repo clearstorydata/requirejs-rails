@@ -11,7 +11,7 @@ require 'active_support/ordered_options'
 
 namespace :requirejs do
   # This method was backported from an earlier version of Sprockets.
-  def ruby_rake_task(task)
+  def ruby_rake_task(task, force = true)
     env = ENV["RAILS_ENV"] || "production"
     groups = ENV["RAILS_GROUPS"] || "assets"
     args = [$0, task, "RAILS_ENV=#{env}", "RAILS_GROUPS=#{groups}"]
@@ -86,7 +86,7 @@ OS X Homebrew users can use 'brew install node'.
       # after the environment ("config/application.rb",
       # "config/environments/*.rb") has been set up.
       Rails.application.config.assets.configure do |env|
-        env.js_compressor = nil
+        env.js_compressor = false
       end
     end
 
